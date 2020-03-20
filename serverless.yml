@@ -1,8 +1,8 @@
 service:
   name: cautious-waffle
 # app and org for use with dashboard.serverless.com
-#app: your-app-name
-#org: your-org-name
+app: my-first-app
+org: shindakun
 
 custom:
   webpack:
@@ -29,3 +29,9 @@ functions:
       - http:
           method: get
           path: hello
+  waffle:
+    handler: handler.slack
+    events:
+      - http:
+          method: post
+          path: slack
