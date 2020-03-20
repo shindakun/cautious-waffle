@@ -1,8 +1,8 @@
 service:
   name: cautious-waffle
 # app and org for use with dashboard.serverless.com
-app: cautious-waffle-app
-org: quandrum
+app: my-first-app
+org: shindakun
 
 custom:
   webpack:
