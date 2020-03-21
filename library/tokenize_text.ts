@@ -1,8 +1,4 @@
-export enum Command {
-  HELP = 'HELP',
-  API = 'API',
-  NOOP = 'NOOP'
-}
+import { Command } from "./command";
 
 const COMMAND_TOKENIZER = /(\w+)\s*(.*)/
 
