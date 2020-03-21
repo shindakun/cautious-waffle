@@ -8,7 +8,7 @@
     "url" : "https://github.com/shindakun/cautious-waffle"
   },
   "scripts": {
-    "test": "jest --forceExit --maxWorkers=2",
+    "test": "jest --detectOpenHandles --maxWorkers=2",
     "watch": "jest --watch"
   },
   "dependencies": {
