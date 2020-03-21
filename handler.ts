@@ -22,7 +22,8 @@ export const slack: APIGatewayProxyHandler = async (event, _ctx) => {
   /*first arg is token*/
   let [, slashCommand] = parseBody(event.body)
 
-  let body: string = getCommandHandler(slashCommand.command)(slashCommand)
+  let handler = getCommandHandler(slashCommand.command)
+  let body = await handler(slashCommand)
 
   try {
     return {
