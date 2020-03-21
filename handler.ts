@@ -1,6 +1,7 @@
 import { APIGatewayProxyHandler } from 'aws-lambda'
-import parseBody from './library/parse_body'
 import 'source-map-support/register'
+import parseBody from './library/parse_body'
+import getCommandHandler from './library/get_command_handler'
 
 export const hello: APIGatewayProxyHandler = async (event, _context) => {
   return {
@@ -21,10 +22,12 @@ export const slack: APIGatewayProxyHandler = async (event, _ctx) => {
   /*first arg is token*/
   let [, slashCommand] = parseBody(event.body)
 
+  let body: string = getCommandHandler(slashCommand.command)(slashCommand)
+
   try {
     return {
       statusCode: 200,
-      body: slashCommand.command + ' ' + slashCommand.arguments
+      body
     }
   } catch (e) {
     return {
