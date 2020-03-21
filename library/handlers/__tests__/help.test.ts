@@ -1,10 +1,10 @@
-import help from "../help";
-import { defaultSlashCommand } from "../../../fixtures/slash_fixture";
+import help from '../help'
+import { defaultSlashCommand } from '../../../fixtures/slash_fixture'
 
-describe("help", () => {
-  it("should return", () => {
-    expect(help(defaultSlashCommand)).toMatchInlineSnapshot(
+describe('help', () => {
+  it('should return', async () => {
+    expect(await help(defaultSlashCommand)).toMatchInlineSnapshot(
       `"help api spells"`
-    );
-  });
-});
+    )
+  })
+})

@@ -1,7 +1,7 @@
 import get_command_handler from '../get_command_handler'
 import { Command } from '../command'
 import help from '../handlers/help'
-import api from '../handlers/api'
+import api from '../handlers/api/handler'
 
 describe('get_command_handler', () => {
   it('should handle api', () => {
