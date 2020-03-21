@@ -13,8 +13,9 @@
     "esModuleInterop": true
   },
   "include": [
+    "node_modules/@types",
     "./**/*.ts",
-    "library/tests/parse_body.test.ts"
+    "**/__tests__/**/*.test.ts"
   ],
   "exclude": [
     "node_modules/**/*",
