@@ -1,16 +1,8 @@
 import { parse } from 'querystring'
-import tokenizeText, { Command } from './tokenize_text'
+import { SlashCommand } from './slash_command'
+import tokenizeText from './tokenize_text'
 
-export type SlaskCommand = {
-  command: Command
-  arguments: string
-  team_id: string
-  team_domain: string
-  user_id: string
-  user_name: string
-}
-
-export default (body: string): [string?, SlaskCommand?] => {
+export default (body: string): [string?, SlashCommand?] => {
   const {
     // Will we need these?
     // channel_id,
