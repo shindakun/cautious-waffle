@@ -1,15 +1,21 @@
 {
   "compilerOptions": {
-    "lib": ["es2017"],
+    "lib": [
+      "es2017"
+    ],
     "removeComments": true,
     "moduleResolution": "node",
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "sourceMap": true,
     "target": "es2017",
-    "outDir": "lib"
+    "outDir": "lib",
+    "esModuleInterop": true
   },
-  "include": ["./**/*.ts"],
+  "include": [
+    "./**/*.ts",
+    "library/tests/parse_body.test.ts"
+  ],
   "exclude": [
     "node_modules/**/*",
     ".serverless/**/*",
