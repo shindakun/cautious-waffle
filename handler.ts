@@ -2,7 +2,6 @@ import { APIGatewayProxyHandler } from 'aws-lambda'
 import 'source-map-support/register'
 import getCommandHandler from './library/get_command_handler'
 import parseBody from './library/parse_body'
-import { createVerify } from 'crypto'
 import verifySignature from './library/verify_signature'
 
 export const hello: APIGatewayProxyHandler = async (event, _context) => {
@@ -21,10 +20,18 @@ export const hello: APIGatewayProxyHandler = async (event, _context) => {
 }
 
 export const slack: APIGatewayProxyHandler = async (event, _ctx) => {
-  if (!verifySignature(event)) {
+  try {
+    let tokenequality = verifySignature(event)
+    if (tokenequality) {
+      return {
+        statusCode: 200,
+        body: 'Error: tokens dont match: ' + tokenequality
+      }
+    }
+  } catch (e) {
     return {
-      statusCode: 401,
-      body: 'Unauthorized'
+      statusCode: 200,
+      body: 'Error: ' + e.message
     }
   }
 
