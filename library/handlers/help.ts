@@ -1,5 +1,5 @@
 import { SlashCommand } from '../slash_command'
 
-export default (cmd: SlashCommand) => {
+export default async (cmd: SlashCommand) => {
   return 'help ' + cmd.arguments
 }
