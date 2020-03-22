@@ -1,7 +1,9 @@
 import { APIGatewayProxyHandler } from 'aws-lambda'
 import 'source-map-support/register'
-import parseBody from './library/parse_body'
 import getCommandHandler from './library/get_command_handler'
+import parseBody from './library/parse_body'
+import { createVerify } from 'crypto'
+import verifySignature from './library/verify_signature'
 
 export const hello: APIGatewayProxyHandler = async (event, _context) => {
   return {
@@ -19,21 +21,32 @@ export const hello: APIGatewayProxyHandler = async (event, _context) => {
 }
 
 export const slack: APIGatewayProxyHandler = async (event, _ctx) => {
-  /*first arg is token*/
-  let [, slashCommand] = parseBody(event.body)
+  if (!verifySignature(event)) {
+    return {
+      statusCode: 401,
+      body: 'Unauthorized'
+    }
+  }
+
+  let slashCommand = parseBody(event.body)
+  if (!slashCommand) {
+    return {
+      statusCode: 400,
+      body: 'Could not determine slash command'
+    }
+  }
 
   let handler = getCommandHandler(slashCommand.command)
-  let body = await handler(slashCommand)
 
   try {
     return {
       statusCode: 200,
-      body
+      body: await handler(slashCommand)
     }
   } catch (e) {
     return {
       statusCode: 500,
-      body: 'Someting went wrong ' + e.message
+      body: 'Something unexpectedly went wrong: ' + e.message
     }
   }
 }
