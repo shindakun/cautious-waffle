@@ -8,6 +8,34 @@ export default async (cmd: SlashCommand) => {
   const client = getOpenDnDClient()
   try {
     const resp: AxiosResponse = await client.getInfo(subcmd, parameter)
+
+    if (resp.data.count) {
+      let options = resp.data.results.map(result => ({
+        text: {
+          type: 'plain_text',
+          text: result.name
+        },
+        value: result.url
+      }))
+      return JSON.stringify([
+        {
+          type: 'section',
+          text: {
+            type: 'mrkdwn',
+            text: 'Pick to show a result:'
+          },
+          accessory: {
+            type: 'static_select',
+            placeholder: {
+              type: 'plain_text',
+              text: 'Select an item',
+              emoji: true
+            },
+            options
+          }
+        }
+      ])
+    }
     return JSON.stringify(resp.data)
   } catch (e) {
     return 'Error: ' + e.message
