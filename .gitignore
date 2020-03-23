@@ -10,3 +10,6 @@ jspm_packages
 
 # IntelliJ
 .idea
+
+# DynamoDB local
+.dynamodb

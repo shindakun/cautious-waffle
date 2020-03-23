@@ -21,7 +21,7 @@ export const hello: APIGatewayProxyHandler = async (event, _context) => {
 
 export const slack: APIGatewayProxyHandler = async (event, _ctx) => {
   try {
-    let tokenequality = verifySignature(event)
+    const tokenequality = verifySignature(event)
     if (tokenequality) {
       return {
         statusCode: 200,
@@ -35,7 +35,7 @@ export const slack: APIGatewayProxyHandler = async (event, _ctx) => {
     }
   }
 
-  let slashCommand = parseBody(event.body)
+  const slashCommand = parseBody(event.body)
   if (!slashCommand) {
     return {
       statusCode: 400,
@@ -43,7 +43,7 @@ export const slack: APIGatewayProxyHandler = async (event, _ctx) => {
     }
   }
 
-  let handler = getCommandHandler(slashCommand.command)
+  const handler = getCommandHandler(slashCommand.command)
 
   try {
     return {
