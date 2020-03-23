@@ -24,4 +24,6 @@ export default ({ body, headers }) => {
   const slack_signature = headers['X-Slack-Signature']
 
   return derived_signature === slack_signature
+    ? undefined
+    : `${derived_signature}=${slack_signature}`
 }
