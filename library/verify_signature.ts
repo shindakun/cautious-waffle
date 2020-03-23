@@ -11,7 +11,7 @@ export default ({ body, headers }) => {
   const timestamp = headers['X-Slack-Request-Timestamp']
   const elapsed = Math.abs(Date.now() - timestamp)
   if (elapsed > FIVE_MINUTES) {
-    return `elapsed ${elapsed} > five minutes ${FIVE_MINUTES}`
+    return `elapsed ${elapsed} (from ${timestamp}) is off more than five minutes ${FIVE_MINUTES}`
   }
 
   // Compute a hmac sha256 from timestamp and body and compare to senders value
