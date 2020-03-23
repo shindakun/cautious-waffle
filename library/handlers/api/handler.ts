@@ -17,7 +17,7 @@ export default async (cmd: SlashCommand) => {
         },
         value: result.url
       }))
-      return JSON.stringify([
+      return [
         {
           type: 'section',
           text: {
@@ -34,7 +34,7 @@ export default async (cmd: SlashCommand) => {
             options
           }
         }
-      ])
+      ]
     }
     return JSON.stringify(resp.data)
   } catch (e) {
