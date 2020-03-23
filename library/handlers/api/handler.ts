@@ -22,7 +22,7 @@ export default async (cmd: SlashCommand) => {
           type: 'section',
           text: {
             type: 'mrkdwn',
-            text: 'Pick to show a result:'
+            text: 'Pick to show a'
           },
           accessory: {
             type: 'static_select',
