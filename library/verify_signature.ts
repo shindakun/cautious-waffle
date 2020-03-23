@@ -4,14 +4,14 @@ const FIVE_MINUTES = 1000 * 60 * 5
 
 export default ({ body, headers }) => {
   if (process.env.DEV) {
-    return true
+    return
   }
 
   // Allow five minute drift between sending and receiving, otherwise probably replay attack
   const timestamp = headers['X-Slack-Request-Timestamp']
   const elapsed = Math.abs(Date.now() - timestamp)
   if (elapsed > FIVE_MINUTES) {
-    return false
+    return `elapsed ${elapsed} > five minutes ${FIVE_MINUTES}`
   }
 
   // Compute a hmac sha256 from timestamp and body and compare to senders value
