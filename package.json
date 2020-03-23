@@ -19,7 +19,6 @@
     "@slack/web-api": "^5.8.0",
     "axios": "^0.19.2",
     "dotenv": "^8.2.0",
-    "hmac": "^1.0.1",
     "serverless": "^1.67.0",
     "slack-block-kit": "^0.9.9",
     "source-map-support": "^0.5.10"
