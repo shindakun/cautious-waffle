@@ -13,7 +13,7 @@ describe("api handler", () => {
       Promise.resolve({ data: { desc: "A fireball spell!" } })
     );
 
-    let cmd = {
+    const cmd = {
       ...defaultSlashCommand,
       text: "api spell fireball"
     };

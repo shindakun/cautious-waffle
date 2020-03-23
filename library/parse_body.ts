@@ -33,7 +33,7 @@ export default (body: string): SlashCommand => {
     return
   }
 
-  let [cmd, args] = tokenizeText(text)
+  const [cmd, args] = tokenizeText(text)
 
   if (!cmd) {
     return

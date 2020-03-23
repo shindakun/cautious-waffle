@@ -6,7 +6,7 @@ export default (text: string): [Command, string?] => {
   if (!text || !text.length) {
     return [Command['NOOP']]
   }
-  let [, cmd, args] = COMMAND_TOKENIZER.exec(text)
+  const [, cmd, args] = COMMAND_TOKENIZER.exec(text)
 
   if (!cmd || !Command[cmd.toUpperCase()]) {
     return [Command['NOOP']]
