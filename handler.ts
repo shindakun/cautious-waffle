@@ -44,11 +44,16 @@ export const slack: APIGatewayProxyHandler = async (event, _ctx) => {
   }
 
   const handler = getCommandHandler(slashCommand.command)
+  const body = await handler(slashCommand)
+  const isJson = typeof body === 'object'
 
   try {
     return {
       statusCode: 200,
-      body: await handler(slashCommand)
+      headers: {
+        'Content-type': isJson ? 'application/json' : 'text/plain'
+      },
+      body: isJson ? JSON.stringify(body) : body
     }
   } catch (e) {
     return {
