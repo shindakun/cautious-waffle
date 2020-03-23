@@ -4,13 +4,13 @@ import { stringify } from 'querystring'
 
 describe('parseBody', () => {
   it('should handle empty text', () => {
-    let cmd = stringify(slashCommand('/waffle'))
-    let slash = parseBody(cmd)
+    const cmd = stringify(slashCommand('/waffle'))
+    const slash = parseBody(cmd)
     expect(slash.command).toBe('NOOP')
   })
   it('should handle no argument help text', () => {
-    let cmd = stringify(slashCommand('/waffle', { text: 'help me' }))
-    let slash = parseBody(cmd)
+    const cmd = stringify(slashCommand('/waffle', { text: 'help me' }))
+    const slash = parseBody(cmd)
     expect(slash.command).toEqual('HELP')
   })
 })

@@ -11,4 +11,9 @@ jspm_packages
 # IntelliJ
 .idea
 
+<<<<<<< HEAD
 .env
+=======
+# DynamoDB local
+.dynamodb
+>>>>>>> master

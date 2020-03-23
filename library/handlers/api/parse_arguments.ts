@@ -5,7 +5,7 @@ export default (params?: string) => {
     return []
   }
 
-  let [, section, sectionArgs] = ARGS_TOKENIZER.exec(params)
+  const [, section, sectionArgs] = ARGS_TOKENIZER.exec(params)
 
   return [section, sectionArgs]
 }

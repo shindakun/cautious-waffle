@@ -7,7 +7,7 @@ const dndApiItem = (section: string) => (item: string) =>
   `${dndApi(section)}/${item}`
 
 const getInfo = (section, params?: string) => {
-  let endpoint = !params
+  const endpoint = !params
     ? dndApi(section)
     : params.indexOf('?') != -1
     ? dndApiSearch(section)(params.replace('?', ''))
