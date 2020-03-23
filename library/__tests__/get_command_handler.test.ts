@@ -5,19 +5,19 @@ import api from '../handlers/api/handler'
 
 describe('get_command_handler', () => {
   it('should handle api', () => {
-    let handler = get_command_handler(Command['API'])
+    const handler = get_command_handler(Command['API'])
     expect(handler).toEqual(api)
   })
   it('should handle help', () => {
-    let handler = get_command_handler(Command['HELP'])
+    const handler = get_command_handler(Command['HELP'])
     expect(handler).toEqual(help)
   })
   it('should show help for noop', () => {
-    let handler = get_command_handler(Command['NOOP'])
+    const handler = get_command_handler(Command['NOOP'])
     expect(handler).toEqual(help)
   })
   it('should show help for undefined', () => {
-    let handler = get_command_handler(Command['???'])
+    const handler = get_command_handler(Command['???'])
     expect(handler).toEqual(help)
   })
 })

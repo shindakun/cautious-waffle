@@ -12,3 +12,5 @@ jspm_packages
 .idea
 
 .env
+# DynamoDB local
+.dynamodb
