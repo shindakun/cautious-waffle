@@ -1,4 +1,8 @@
 import hmac from 'hmac'
+import dotenv from "dotenv";
+dotenv.config()
+
+require('dotenv').config();
 
 const FIVE_MINUTES = 1000 * 60 * 5
 
