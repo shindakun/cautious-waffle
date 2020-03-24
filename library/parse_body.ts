@@ -2,7 +2,7 @@ import { parse } from 'querystring'
 import { SlashCommand } from './slash_command'
 import tokenizeText from './tokenize_text'
 
-export default (body: string): [string?, SlashCommand?] => {
+export default (body: string): SlashCommand => {
   const {
     // Will we need these?
     // channel_id,
@@ -30,24 +30,21 @@ export default (body: string): [string?, SlashCommand?] => {
     Array.isArray(user_id) ||
     Array.isArray(user_name)
   ) {
-    return []
+    return
   }
 
-  let [cmd, args] = tokenizeText(text)
+  const [cmd, args] = tokenizeText(text)
 
   if (!cmd) {
-    return []
+    return
   }
 
-  return [
-    token,
-    {
-      command: cmd,
-      arguments: args,
-      team_id,
-      team_domain,
-      user_id,
-      user_name
-    }
-  ]
+  return {
+    command: cmd,
+    arguments: args,
+    team_id,
+    team_domain,
+    user_id,
+    user_name
+  }
 }

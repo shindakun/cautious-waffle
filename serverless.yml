@@ -22,6 +22,7 @@ provider:
     minimumCompressionSize: 1024 # Enable gzip compression for responses > 1 KB
   environment:
     AWS_NODEJS_CONNECTION_REUSE_ENABLED: 1
+    SLACK_SIGNATURE: ${param:slack_signature}
 
 functions:
   hello:
