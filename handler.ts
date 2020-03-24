@@ -65,9 +65,7 @@ export const slack: APIGatewayProxyHandler = async (event, _ctx) => {
   }
 }
 
-export const dyno: APIGatewayProxyHandler = async (event, _ctx) => {
-  let [] = parseBody(event.body)
-
+export const dyno: APIGatewayProxyHandler = async (_event, _ctx) => {
   let request = await db('scan', {
     TableName: 'characters'
   })
