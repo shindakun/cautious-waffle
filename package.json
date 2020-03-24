@@ -9,7 +9,7 @@
   },
   "scripts": {
     "lint": "eslint --ext .js,.ts ./",
-    "test": "jest",
+    "test": "jest --detectOpenHandles --maxWorkers=2",
     "watch": "jest --watch",
     "dev": "IS_OFFLINE=true DEV=true sls offline",
     "windev": "sls offline"
