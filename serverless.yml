@@ -67,23 +67,6 @@ functions:
           method: get
           path: dyno
 
-resources:
-  Resources:
-    charactersTable:
-      Type: AWS::DynamoDB::Table
-      DeletionPolicy : Retain
-      Properties:
-        TableName: characters
-        AttributeDefinitions:
-          - AttributeName: guid
-            AttributeType: S
-        KeySchema:
-          - AttributeName: guid
-            KeyType: HASH
-        ProvisionedThroughput:
-          ReadCapacityUnits: 1
-          WriteCapacityUnits: 1
-
 package:
   exclude:
     - node_modules/dynamodb-localhost/**
