@@ -2,7 +2,15 @@
 Something to do with Dungeons and Dragons. Maybe play it in slack, I think.
 
 ---
- 
+
+## offline development
+
+- Install DynamoDB Local
+  - `sls dynamodb install`
+
+- Start Serverless offline
+  - `IS_OFFLINE=true serverless offline start`
+
 ---
 | Command | Description |
 | --- | --- |
