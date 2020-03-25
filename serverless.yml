@@ -34,7 +34,7 @@ plugins:
 provider:
   name: aws
   runtime: nodejs12.x
-  regiion: us-west-2
+  region: us-west-2
   iamRoleStatements:
   - Effect: "Allow"
     Action:
