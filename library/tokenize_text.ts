@@ -1,16 +1,16 @@
-import { Command } from './command'
+import {Command} from './command'
 
-const COMMAND_TOKENIZER = /(\w+)\s*(.*)/
+const COMMAND_TOKENIZER = /(\w+)\s*(.*)/;
 
-export default (text: string): [Command, string?] => {
-  if (!text || !text.length) {
-    return [Command['NOOP']]
-  }
-  const [, cmd, args] = COMMAND_TOKENIZER.exec(text)
+export default (text: string): [Command, string[]?] => {
+    if (!text || !text.length) {
+        return [Command['NOOP']]
+    }
+    const [, cmd, args] = COMMAND_TOKENIZER.exec(text);
 
-  if (!cmd || !Command[cmd.toUpperCase()]) {
-    return [Command['NOOP']]
-  }
+    if (!cmd || !Command[cmd.toUpperCase()]) {
+        return [Command['NOOP']]
+    }
 
-  return [Command[cmd.toUpperCase()], args]
+    return [Command[cmd.toUpperCase()], args.split(' ')]
 }

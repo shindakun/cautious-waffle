@@ -1,13 +1,15 @@
 import { AxiosResponse } from 'axios'
 import { SlashCommand } from '../../slash_command'
 import { getOpenDnDClient } from './open_dnd_client'
-import parseArguments from './parse_arguments'
+
+const EMPTY_STRING = "";
 
 export default async (cmd: SlashCommand) => {
-  const [subcmd, parameter] = parseArguments(cmd.arguments)
-  const client = getOpenDnDClient()
+  const subcmd = cmd.arguments.length > 0 ? cmd.arguments[0] : EMPTY_STRING;
+  const parameter = cmd.arguments.length > 1 ? cmd.arguments[1] : EMPTY_STRING;
+  const client = getOpenDnDClient();
   try {
-    const resp: AxiosResponse = await client.getInfo(subcmd, parameter)
+    const resp: AxiosResponse = await client.getInfo(subcmd, parameter);
 
     if (resp.data.count) {
       let options = resp.data.results.map(result => ({
@@ -43,3 +45,7 @@ export default async (cmd: SlashCommand) => {
     return 'Error: ' + e.message
   }
 }
+
+const handlerHelp = async (cmd: string[]) => cmd.join(' ');
+
+export { handlerHelp }

@@ -14,12 +14,12 @@ describe('tokenizeText', () => {
   it('should return HELP for help entry text', () => {
     const [cmd, args] = tokenizeText('help api')
     expect(cmd).toBe('HELP')
-    expect(args).toBe('api')
+    expect(args).toEqual(['api'])
   })
 
   it('should return API for api spell text', () => {
     const [cmd, args] = tokenizeText('api spell fireball')
     expect(cmd).toBe('API')
-    expect(args).toBe('spell fireball')
+    expect(args).toEqual(['spell', 'fireball'])
   })
 })
