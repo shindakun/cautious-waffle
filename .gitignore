@@ -11,7 +11,7 @@ jspm_packages
 # IntelliJ
 .idea
 
-# DynamoDB local
+# Local Dynamodb
 .dynamodb
 
 # Environment variables
