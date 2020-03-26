@@ -71,18 +71,27 @@ export const characters: APIGatewayProxyHandler = async (_event, _ctx) => {
       'scan',
       {
         TableName: process.env.CHARACTERS_TABLE_NAME
-      }).then(
-      response => response.promise().then(data => data, err => err));
+      });
+  let data;
+  try {
+    const response = await request.promise();
+    data = await response;
+  } catch (e) {
+    return {
+      statusCode: 500,
+      body: JSON.stringify('Something went wrong connecting to the database' + e.message)
+    }
+  }
 
   try {
     return {
       statusCode: 200,
-      body: JSON.stringify(request)
+      body: JSON.stringify(data)
     }
   } catch (e) {
     return {
       statusCode: 500,
-      body: JSON.stringify('Something went wrong ' + e.message)
+      body: JSON.stringify('Something went wrong responding ' + e.message)
     }
   }
 };

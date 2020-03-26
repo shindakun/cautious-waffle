@@ -13,5 +13,3 @@ Resources:
       ProvisionedThroughput:
         ReadCapacityUnits: 1
         WriteCapacityUnits: 1
-      # Set the capacity to auto-scale
-      BillingMode: PAY_PER_REQUEST
