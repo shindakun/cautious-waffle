@@ -8,23 +8,26 @@ custom:
   webpack:
     webpackConfig: ./webpack.config.js
     includeModules: true
+  stage: ${opt:stage, self:provider.stage}
+  # Set the table name here so we can use it while testing locally
+  charactersTableName: ${self:custom.stage}-characters
 
-#  dynamodb:
-#    stages:
-#      - dev
-#    start:
-#      port: 8000
-#      inMemory: true
-#      heapInitial: 200m
-#      heapMax: 1g
-#      migrate: true
-#      seed: true
-#      convertEmptyValues: true
-#    seed:
-#      domain:
-#        sources:
-#          - table: characters
-#            sources: [./offline/migrations/characters.json]
+  dynamodb:
+    stages:
+      - dev
+    start:
+      port: 8000
+      inMemory: true
+      heapInitial: 200m
+      heapMax: 1g
+      migrate: true
+      seed: true
+      convertEmptyValues: true
+    seed:
+      domain:
+        sources:
+          - table: ${self:custom.charactersTableName}
+            sources: [./offline/migrations/characters.json]
 
 # Add the serverless-webpack plugin
 plugins:
@@ -46,6 +49,11 @@ provider:
   environment:
     AWS_NODEJS_CONNECTION_REUSE_ENABLED: 1
     SLACK_SIGNATURE: ${param:slack_signature}
+    CHARACTERS_TABLE_NAME: ${self:custom.charactersTableName}
+
+resources:
+  # DynamoDB
+  - ${file(resources/dynamodb-tables.yml)}
 
 functions:
   hello:
@@ -61,11 +69,11 @@ functions:
           method: post
           path: slack
   character:
-    handler: handler.dyno
+    handler: handler.characters
     events:
       - http:
           method: get
-          path: dyno
+          path: characters
 
 package:
   exclude:
