@@ -1,10 +1,9 @@
-import {APIGatewayProxyEvent, APIGatewayProxyHandler} from 'aws-lambda'
+import {APIGatewayProxyHandler} from 'aws-lambda'
 import 'source-map-support/register'
 import getCommandHandler from './library/get_command_handler'
 import db from './library/database/dynamodb'
 import parseBody from './library/parse_body'
 import verifySignature from './library/verify_signature'
-import AWS from "aws-sdk";
 
 
 export const hello: APIGatewayProxyHandler = async (event, _context) => {

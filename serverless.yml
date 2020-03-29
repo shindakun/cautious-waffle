@@ -11,6 +11,7 @@ custom:
   stage: ${opt:stage, self:provider.stage}
   # Set the table name here so we can use it while testing locally
   charactersTableName: ${self:custom.stage}-characters
+  activeCharactersTableName: ${self:custom.stage}-active_characters
 
   dynamodb:
     stages:
@@ -50,6 +51,7 @@ provider:
     AWS_NODEJS_CONNECTION_REUSE_ENABLED: 1
     SLACK_SIGNATURE: ${param:slack_signature}
     CHARACTERS_TABLE_NAME: ${self:custom.charactersTableName}
+    ACTIVE_CHARACTERS_TABLE_NAME: ${self:custom.activeCharactersTableName}
 
 resources:
   # DynamoDB
