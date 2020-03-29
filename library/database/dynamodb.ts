@@ -13,6 +13,6 @@ const client = isOffline()
   : new AWS.DynamoDB.DocumentClient()
 
 // add callback?
-export default async (method: string, params: any) => {
-  return await client[method](params);
+export default async (method: string, params: any): Promise<AWS.Request<string, object>> => {
+  return await client[method](params) ;
 };

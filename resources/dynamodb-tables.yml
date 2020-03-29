@@ -1,0 +1,15 @@
+Resources:
+  CharactersTable:
+    Type: AWS::DynamoDB::Table
+    DeletionPolicy: Retain
+    Properties:
+      TableName: ${self:custom.charactersTableName}
+      AttributeDefinitions:
+        - AttributeName: guid
+          AttributeType: S
+      KeySchema:
+        - AttributeName: guid
+          KeyType: HASH
+      ProvisionedThroughput:
+        ReadCapacityUnits: 1
+        WriteCapacityUnits: 1
