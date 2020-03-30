@@ -18,7 +18,7 @@ export default ({ body, headers }) => {
   // Compute a hmac sha256 from timestamp and body and compare to senders value
   const signature_basestring = `v0:${timestamp}:${body}`
   const digest = crypto
-    .createHmac('sha256', process.env.SLACK_SIGNATURE)
+    .createHmac('sha256', process.env.STAGE === 'dev' ? process.env.SLACK_SIGNATURE : process.env.TEST_SIGNATURE)
     .update(signature_basestring)
     .digest('hex')
 
