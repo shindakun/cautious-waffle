@@ -47,5 +47,6 @@ export default async (cmd: SlashCommand) => {
 }
 
 const handlerHelp = async (cmd: string[]) => cmd.join(' ');
+const handlerRoll = async (cmd: string[]) => cmd.join(' ');
 
-export { handlerHelp }
+export { handlerHelp, handlerRoll }

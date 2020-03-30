@@ -39,3 +39,5 @@ Using the above and `curl` we would call `api spells`:
 | `npm test` | run jest tests |
 | `npm watch`  | run jest tests only on files that have been changed |
 | `npm dev` | run serverless in offline mode for local development |
+
+
