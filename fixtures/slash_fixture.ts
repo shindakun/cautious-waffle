@@ -27,3 +27,12 @@ export const helpForNoopSlashCommand: SlashCommand = {
   user_id: '2',
   user_name: 'movetype fly'
 };
+
+export const rollForRollSlashCommand: SlashCommand = {
+  command: Command['ROLL'],
+  arguments: ['2d20'],
+  team_domain: 'krumpasclub.slack.com',
+  team_id: '1',
+  user_id: '2',
+  user_name: 'movetype fly'
+};

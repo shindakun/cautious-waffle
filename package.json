@@ -13,6 +13,7 @@
     "test": "jest --detectOpenHandles --maxWorkers=2",
     "watch": "jest --watch",
     "dev": "concurrently \"IS_OFFLINE=true DEV=true sls offline\" \"sls dynamodb start\"",
+    "windev2": "concurrently \"sls offline\" \"sls dynamodb start\"",
     "windev": "sls offline"
   },
   "dependencies": {
