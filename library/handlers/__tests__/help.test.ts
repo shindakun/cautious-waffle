@@ -23,7 +23,7 @@ describe("help", () => {
             text: {
               type: "mrkdwn",
               text:
-                "No help defined for command noop\n Valid commands are HELP, API, NOOP, ROLL",
+                "No help defined for command noop\n Valid commands are HELP, API, ROLL, CHARACTER, NOOP",
             },
           },
         ],
@@ -34,7 +34,7 @@ Object {
     Object {
       "text": Object {
         "text": "No help defined for command noop
- Valid commands are HELP, API, NOOP, ROLL",
+ Valid commands are HELP, API, ROLL, CHARACTER, NOOP",
         "type": "mrkdwn",
       },
       "type": "section",
