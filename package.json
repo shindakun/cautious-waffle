@@ -33,7 +33,7 @@
   },
   "devDependencies": {
     "@slack-wrench/fixtures": "2.1.0",
-    "@types/aws-lambda": "8.10.47",
+    "@types/aws-lambda": "8.10.48",
     "@types/jest": "25.2.1",
     "@types/node": "10.17.18",
     "@typescript-eslint/eslint-plugin": "2.26.0",
