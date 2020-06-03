@@ -32,7 +32,7 @@
     "utf-8-validate": "^5.0.2"
   },
   "devDependencies": {
-    "@slack-wrench/fixtures": "2.1.0",
+    "@slack-wrench/fixtures": "2.2.4",
     "@types/aws-lambda": "8.10.50",
     "@types/jest": "25.2.1",
     "@types/node": "10.17.21",
